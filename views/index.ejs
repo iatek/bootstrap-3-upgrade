@@ -9,7 +9,7 @@
                     if (typeof data.error!="undefined") {
                         alert(data.error);
                     } else {
-                        $('#formBootstrap').val(data.result);
+                        $('#target').val(data.result);
                         //$('#formBootstrap').html(data.result);
                     }
                 },
@@ -57,7 +57,9 @@
           
           <hr>
           
-          This tool will perform the following conversions...
+          This upgrade tool replaces according to Bootstrap 3.0 CSS classes. Additionally it will convert navbar, modal, carousel, images.
+          
+          <br>
           
           <table class="table">
             <tbody><tr><td><a href="#">Bootstrap 2.x</a></td><td><a href="#">Bootstrap 3.0</a></td></tr>
@@ -84,7 +86,7 @@
             <tr><td>.thumbnail</td><td>.img-thumbnail</td></tr>
             </tbody></table>
           
-          Additionally, this tool will convert navbar, modal, carousel, images.
+         
           
           <p>
           <a href="http://bootply.com/bootstrap-3-migration-guide">Migration Guide</a>
