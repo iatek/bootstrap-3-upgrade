@@ -1,3 +1,23 @@
+<script>
+    $('#btnConvert').click(function(){
+        $.ajax({
+            url: "/",
+            type: "post",
+            data: $('#formBootstrap').serializeObject(),
+            success: function (data) {
+                if (typeof data.error!="undefined") {
+                    alert(data.error);
+                } else {
+                    $('#formBootstrap').html(data.result);
+                }
+            },
+            error: function (e) {
+                console.log('error:'+e);
+            }
+        });
+    });
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
@@ -49,10 +69,10 @@
           </div>
         </div>
         <div class="col-lg-8">
-          <form action="/" method="POST" class="form-horizontal">
+          <form action="/" method="POST" class="form-horizontal" id="formBootstrap">
             <h3>Bootstrap 2.x HTML</h3> 
             <textarea id="source" name="source" class="form-control" rows="15">source HTML goes here</textarea>
-            <button class="btn btn-primary btn-large btn-block">Convert to 3</button>
+            <button class="btn btn-primary btn-large btn-block" id="btnConvert">Convert to Bootstrap 3</button>
             <h3>Bootstrap 3.0 RC 1  HTML</h3>
             <textarea id="target" name="target" class="form-control" rows="15">converted HTML shows here</textarea>
           </form>
