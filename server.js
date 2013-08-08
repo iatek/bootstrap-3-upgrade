@@ -26,10 +26,6 @@ app.post('/', function(req, res){
 
 });
 
-app.get('/preview', function(req, res){
-    res.render('preview');
-});
-
 app.get('/proxy', function(req, res){
     if (req.param("purl")) {
         request(unescape(req.param("purl")), function (error, response, body) {
