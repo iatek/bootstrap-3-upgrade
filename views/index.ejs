@@ -9,7 +9,8 @@
                     if (typeof data.error!="undefined") {
                         alert(data.error);
                     } else {
-                        $('#formBootstrap').html(data.result);
+                        $('#formBootstrap').val(data.result);
+                        //$('#formBootstrap').html(data.result);
                     }
                 },
                 error: function (e) {
