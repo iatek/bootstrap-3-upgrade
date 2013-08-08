@@ -1,21 +1,40 @@
 <script>
-    $('#btnConvert').click(function(){
-        $.ajax({
-            url: "/",
-            type: "post",
-            data: $('#formBootstrap').serializeObject(),
-            success: function (data) {
-                if (typeof data.error!="undefined") {
-                    alert(data.error);
-                } else {
-                    $('#formBootstrap').html(data.result);
+    $(document).ready(function() {
+        $('#btnConvert').click(function(){
+            $.ajax({
+                url: "/",
+                type: "post",
+                data: $('#formBootstrap').serializeObject(),
+                success: function (data) {
+                    if (typeof data.error!="undefined") {
+                        alert(data.error);
+                    } else {
+                        $('#formBootstrap').html(data.result);
+                    }
+                },
+                error: function (e) {
+                    console.log('error:'+e);
                 }
-            },
-            error: function (e) {
-                console.log('error:'+e);
-            }
+            });
         });
     });
+    
+    $.fn.serializeObject = function()
+    {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function() {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+    };
 </script>
 
 <div class="container">
