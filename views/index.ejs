@@ -1,6 +1,7 @@
 <script>
     $(document).ready(function() {
         $('#btnConvert').click(function(){
+            $('#target').val();
             $.ajax({
                 url: "/",
                 type: "post",
@@ -12,7 +13,7 @@
                         $('#target').val(data.result);
                         $('html, body').animate({
                             scrollTop: $("#bs3").offset().top
-                        }, 2000);
+                        }, 1000);
                     }
                 },
                 error: function (e) {
@@ -86,7 +87,7 @@
           <br>
           
           <p>
-          See the complete <a href="http://bootply.com/bootstrap-3-migration-guide">Migration Guide</a>.
+          See the complete <a href="http://bootply.com/bootstrap-3-migration-guide" target="ext">Migration Guide</a>.
           </p>
           
           <h3>Class Changes</h3>
