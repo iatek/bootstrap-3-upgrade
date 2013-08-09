@@ -18,6 +18,48 @@
                 }
             });
         });
+        
+        $('#btnPreview').click(function(){
+        
+            var htm = $('#target').val();
+            
+            var newForm = $('<form>', {
+                'action': 'http://www.bootply.com/new',
+                'method': 'POST',
+                'target': 'full'
+                }).append($('<input>', {
+                    'name': 'target',
+                    'value': htm,
+                    'type': 'hidden'
+                }));
+                
+            newForm.hide();
+            newForm.appendTo('body');
+            window.open('','full','width=1280,height=700,status=0');
+            newForm.submit();
+            newForm.remove();
+            
+            return false;
+        
+            /*
+            $.ajax({
+                url: "http://www.bootply.com/new",
+                type: "post",
+                data: $('#formBootstrap').serializeObject(),
+                success: function (data) {
+                    if (typeof data.error!="undefined") {
+                        alert(data.error);
+                    } else {
+                        $('#target').val(data.result);
+                        //$('#formBootstrap').html(data.result);
+                    }
+                },
+                error: function (e) {
+                    console.log('error:'+e);
+                }
+            });
+            */
+        });
     });
     
     $.fn.serializeObject = function()
