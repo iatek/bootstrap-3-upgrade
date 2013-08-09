@@ -10,7 +10,9 @@
                         alert(data.error);
                     } else {
                         $('#target').val(data.result);
-                        //$('#formBootstrap').html(data.result);
+                        $('html, body').animate({
+                            scrollTop: $("#bs3").offset().top
+                        }, 2000);
                     }
                 },
                 error: function (e) {
@@ -35,30 +37,11 @@
                 
             newForm.hide();
             newForm.appendTo('body');
-            window.open('','full','width=1280,height=700,status=0');
+            window.open('','full','width=1240,height=650,status=0');
             newForm.submit();
             newForm.remove();
             
             return false;
-        
-            /*
-            $.ajax({
-                url: "http://www.bootply.com/new",
-                type: "post",
-                data: $('#formBootstrap').serializeObject(),
-                success: function (data) {
-                    if (typeof data.error!="undefined") {
-                        alert(data.error);
-                    } else {
-                        $('#target').val(data.result);
-                        //$('#formBootstrap').html(data.result);
-                    }
-                },
-                error: function (e) {
-                    console.log('error:'+e);
-                }
-            });
-            */
         });
     });
     
@@ -94,11 +77,11 @@
         <div class="col-lg-4">
           <div class="well"> 
           
-          <strong>Bootstrap 3 is a major overhaul, and there are a lot of changes from Bootstrap 2.x.</strong> This conversion service is intended to help Bootstrap developers transition to 3.
+          <strong>Bootstrap 3 is a major overhaul, and there are a lot of changes from Bootstrap 2.x. This conversion service is intended to help you upgrade to Bootstrap 3.</strong>
           
           <hr>
           
-          <p>This upgrade tool replaces the Bootstrap 2.x CSS class names with Bootstrap 3.0 class names. Additionally, this tool converts navbar, modal, carousel, images and other components in accordance with the Bootstrap 3.0 docs and migration guide.</p>
+          <p>This upgrade tool replaces the Bootstrap 2.x CSS class names with Bootstrap 3.0 class names. Additionally, this tool converts navbar, modal, carousel, images and other components in accordance with the <a href="http://getbootstrap.com" target="ext">Bootstrap 3.0 docs</a>.</p>
           
           <br>
           
@@ -136,11 +119,11 @@
         </div>
         <div class="col-lg-8">
           <form action="/" method="POST" class="form-horizontal" id="formBootstrap">
-            <h3>Bootstrap 2.x</h3> 
+            <h3 id="bs2">Bootstrap 2.x</h3> 
             <textarea id="source" name="source" class="form-control" rows="18">paste source Bootstrap 2.x HTML markup here</textarea>
             <button class="btn btn-primary btn-large btn-block" id="btnConvert" type="button">Convert to Bootstrap 3</button>
             <div class="row text-center"><i class="icon-arrow-down" style="font-size:50pt;"></i></div>
-            <h3>Bootstrap 3.0 RC 1</h3>
+            <h3 id="bs3">Bootstrap 3.0 RC 1</h3>
             <textarea id="target" name="target" class="form-control" rows="18">converted Bootstrap 3.0 HTML markup shows here</textarea>
             <button class="btn btn-primary btn-large btn-block" id="btnPreview" type="button">Preview</button>
           </form>
