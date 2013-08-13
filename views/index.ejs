@@ -1,6 +1,9 @@
 <script>
     $(document).ready(function() {
         $('#btnConvert').click(function(){
+        
+            $.getScript("/carbon.js"); // ads
+        
             $('#target').val("");
             $.ajax({
                 url: "/",
@@ -44,6 +47,9 @@
             
             return false;
         });
+        
+        //$.getScript("/carbon.js"); // ads
+        
     });
     
     $.fn.serializeObject = function()
