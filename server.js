@@ -6,18 +6,7 @@ var port = process.env.PORT || 4000,
     
 /* default route */
 app.get('/', function(req,res){
-    
-    var urlToFetch = req.query["url"],
-        fresh = req.query.fresh||false;
-
-    if (!urlToFetch) {
-        console.log("show home page");
-        res.render("index");
-    }
-    else {
-        
-        
-    }
+    res.render("index");
 });
 
 app.post('/', function(req, res){
@@ -28,28 +17,14 @@ app.post('/', function(req, res){
 
 });
 
-app.get('/proxy', function(req, res){
-    if (req.param("purl")) {
-        request(unescape(req.param("purl")), function (error, response, body) {
-			if (!error && response.statusCode == 200) {
-				res.send(body);
-			}
-			else {
-				res.json({error:"Bad URL request."});
-			}
-		});
-	}
-    else {
-        res.json({error:"URL is required."});
-    }
-});
-
 /* The 404 Route (ALWAYS Keep this as the last route) */
 app.get('/*', function(req, res){
     res.render('404.ejs');
 });
 
 var convert = function(str){
+    
+    /* known regex string replacements */
 
     str = str.replace(/container-fluid/g,"container");
     str = str.replace(/row-fluid/g,"row");
@@ -79,6 +54,8 @@ var convert = function(str){
     str = str.replace(/(?!class=\")-phone/g,'-sm');
     str = str.replace(/(?!class=\")-tablet/g,'-md');
     str = str.replace(/(?!class=\")-desktop/g,'-lg');
+    
+    /* structure changes require DOM manipulation */
     
     /*
     $('#ele').remove();
