@@ -81,9 +81,9 @@ var convert = function(str){
     
     
     $('#ele').remove();
-    var ele = $('<form id="ele" style="display:none;"></form>');
+    var ele = $('<body id="ele"></body>');
     ele.html(str);
-    ele.appendTo('body');
+    ele.appendTo(window);
     
     //navbar
     var nb = $('#ele').find('.navbar');
