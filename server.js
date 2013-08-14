@@ -75,6 +75,7 @@ var convert = function(str){
     str = str.replace(/(?!class=\")brand/g,'navbar-brand');
     str = str.replace(/(?!class=\")btn btn-navbar/g,'navbar-toggle');
     str = str.replace(/nav-collapse/g,'navbar-collapse');
+    str = str.replace(/nav-toggle/g,'navbar-toggle');
     str = str.replace(/(?!class=\")-phone/g,'-sm');
     str = str.replace(/(?!class=\")-tablet/g,'-md');
     str = str.replace(/(?!class=\")-desktop/g,'-lg');

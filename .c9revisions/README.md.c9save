@@ -1,0 +1,2 @@
+{"ts":1376481979369,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"bootstrap-3-upgrade\n===================\n\nMigration scripts for Bootstrap 3.\n"]],"start1":0,"start2":0,"length1":0,"length2":76}]],"length":76}
+{"contributors":[],"silentsave":false,"ts":1376482047656,"patch":[[{"diffs":[[0,"trap 3.\n"],[1,"\nhttp://upgrade-bootstrap.bootply.com\n\n"]],"start1":68,"start2":68,"length1":8,"length2":47}]],"length":115,"saved":false}
