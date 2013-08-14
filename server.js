@@ -79,7 +79,7 @@ var convert = function(str){
     str = str.replace(/(?!class=\")-tablet/g,'-md');
     str = str.replace(/(?!class=\")-desktop/g,'-lg');
     
-    
+    /*
     $('#ele').remove();
     var ele = $('<body id="ele"></body>');
     ele.html(str);
@@ -106,7 +106,8 @@ var convert = function(str){
     // replace .thumbnails with .media-list
             
     str = $('#ele').html();
-        
+      */
+      
     return str;
 }
 
