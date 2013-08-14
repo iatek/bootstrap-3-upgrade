@@ -76,10 +76,10 @@ var convert = function(str){
         //wrap the brand and nav-toggle with nav-header
             
             
-            var brand = nb.clone(".navbar-brand");
-            var togg = nb.clone(".navbar-toggle");
-            nb.remove(".navbar-brand");
-            nb.remove(".navbar-toggle");
+            var brand = nb.find(".navbar-brand");
+            var togg = nb.find(".navbar-toggle");
+            //nb.remove(".navbar-brand");
+            //nb.remove(".navbar-toggle");
             var navbarheader = $('<div class="navbar-header"></div>');
             
             if (typeof brand != "undefined" && typeof togg != "undefined") {
