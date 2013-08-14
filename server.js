@@ -72,6 +72,24 @@ var convert = function(str){
         if (typeof h!="undefined"){
             nb.html(h);
         }
+        
+        //wrap the brand and nav-toggle with nav-header
+            
+            
+            var brand = nb.clone(".navbar-brand");
+            var togg = nb.clone(".navbar-toggle");
+            nb.remove(".navbar-brand");
+            nb.remove(".navbar-toggle");
+            var navbarheader = $('<div class="navbar-header"></div>');
+            
+            if (typeof brand != "undefined" && typeof togg != "undefined") {
+                brand.appendTo(navbarheader);
+                togg.appendTo(navbarheader);
+                navbarheader.prependTo(nb);
+            }
+            
+            console.log("ele"+ele.html());
+        
     }
     
     //icons
