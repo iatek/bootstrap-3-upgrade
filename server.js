@@ -56,12 +56,11 @@ var convert = function(str){
     str = str.replace(/(?!class=\")-desktop/g,'-lg');
     
     /* structure changes require DOM manipulation */
-    
-    /*
+
     $('#ele').remove();
-    var ele = $('<body id="ele"></body>');
+    var ele = $('<form id="ele"></form>');
     ele.html(str);
-    ele.appendTo(window);
+    ele.appendTo("body");
     
     //navbar
     var nb = $('#ele').find('.navbar');
@@ -84,7 +83,6 @@ var convert = function(str){
     // replace .thumbnails with .media-list
             
     str = $('#ele').html();
-      */
       
     return str;
 }
