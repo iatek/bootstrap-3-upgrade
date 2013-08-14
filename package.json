@@ -6,6 +6,8 @@
     "express": ">=3.x",
     "ejs": ">=0.6.x",
     "ejs-locals": "1.0.2",
+    "jquery": ">=1.6.x",
+    "jsdom": ">=0.5.2",
     "request": ">=2.x"
   },
    "engines": {

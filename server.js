@@ -1,5 +1,7 @@
 var port = process.env.PORT || 4000,
     app = require('./app').init(port),
+    window = require('jsdom').jsdom().createWindow(),
+    $ = require('jquery'),
     request = require('request');
     
 /* default route */
@@ -72,14 +74,14 @@ var convert = function(str){
     
     str = str.replace(/(?!class=\")brand/g,'navbar-brand');
     str = str.replace(/(?!class=\")btn btn-navbar/g,'navbar-toggle');
+    str = str.replace(/nav-collapse/g,'navbar-collapse');
     str = str.replace(/(?!class=\")-phone/g,'-sm');
     str = str.replace(/(?!class=\")-tablet/g,'-md');
     str = str.replace(/(?!class=\")-desktop/g,'-lg');
     
     
-    /*
     $('#ele').remove();
-    var ele = $('<section id="ele" style="display:none;"></section>');
+    var ele = $('<form id="ele" style="display:none;"></form>');
     ele.html(str);
     ele.appendTo('body');
     
@@ -103,9 +105,8 @@ var convert = function(str){
     
     // replace .thumbnails with .media-list
             
-    return $('#ele').html();
-    */
-    
+    str = $('#ele').html();
+        
     return str;
 }
 
