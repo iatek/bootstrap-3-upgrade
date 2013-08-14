@@ -53,9 +53,9 @@ var convert = function(str){
     str = str.replace(/row-fluid/g,"row");
     //str = str.replace(/span(?=[1-9|10|11|12])/g,'col col-lg-');
     str = str.replace(/span(?=[1-9|10|11|12])/g,'col-lg-');
-    str = str.replace(/offset(?=[1-9|10|11|12])/g,'col-offset-');
+    str = str.replace(/offset(?=[1-9|10|11|12])/g,'col-lg-offset-');
     str = str.replace(/(?!class=\")btn(?=[\s\"][^\-|btn])/g,'btn btn-default');
-    str = str.replace(/btn-mini/g,'btn-small');
+    str = str.replace(/btn-mini/g,'btn-sm');
     str = str.replace(/hero-unit/g,'jumbotron');
     str = str.replace(/nav-list/g,'');
     str = str.replace(/nav-fixed-sidebar/g,'affix');
