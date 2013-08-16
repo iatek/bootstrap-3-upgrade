@@ -93,14 +93,14 @@ var convert = function(str){
     }
     
     //icons
-    var icos = $('#ele').find("[class^=icon]");
+    var icos = ele.find("[class^=icon]");
     
     //imgs
-    var imgs = $('#ele img').addClass("img-responsive");
+    var imgs = ele.find('img').addClass("img-responsive");
     
     // replace .thumbnails with .media-list
             
-    //str = $('#ele').html();
+    str = ele.html();
       
     return str;
 }
