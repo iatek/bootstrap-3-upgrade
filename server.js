@@ -40,14 +40,15 @@ var rules = [
     {name:"input",regex:/input-large/g,rep:"input-lg"},
     {name:"input",regex:/input-small/g,rep:"input-sm"},
     {name:"input",regex:/input-append/g,rep:"input-group"},
+    {name:"input",regex:/input-prepend/g,rep:"input-group"},
     {name:"add-on",regex:/add-on/g,rep:"input-group-addon"},
     {name:"hero",regex:/hero-unit/g,rep:"jumbotron"},
     {name:"nav list",regex:/nav-list/g,rep:""},
-    {name:"fixed",regex:/nav-fixed-sidebar/g,rep:"affix"},
+    {name:"affix",regex:/nav-fixed-sidebar/g,rep:"affix"},
     {name:"icons",regex:/(='\bicon-)/g,rep:"='glyphicon glyphicon-"},
     {name:"icons",regex:/(="\bicon-)/g,rep:"=\"glyphicon glyphicon-"},
     {name:"icons",regex:/(=\bicon-)/g,rep:"=glyphicon glyphicon-"},
-    {name:"span",regex:/\bclass+(\sicon-)/g,rep:"=\"glyphicon glyphicon-"},
+    {name:"icons",regex:/\bclass+(\sicon-)/g,rep:"=\"glyphicon glyphicon-"},
     {name:"brand",regex:/(?!class=\")brand/g,rep:"navbar-brand"},
     {name:"btn",regex:/(?!class=\")btn btn-navbar/g,rep:"navbar-toggle"},
     {name:"nav",regex:/nav-collapse/g,rep:"navbar-collapse"},
@@ -93,8 +94,20 @@ var convert = function(str){
             togg.appendTo(navbarheader);
             navbarheader.prependTo(nb);
         }
-        
-        console.log("ele"+ele.html());
+    }
+    
+    //modal structure
+    var md = $('#ele').find('.modal');
+    if (typeof md!="undefined"){
+        md.removeClass("hide");
+        var mdia = $('<div class="modal-dialog"></div>');
+        var mc = $('<div class="modal-content"></div>');
+        mc.appendTo(mdia);
+        $('#ele').find(".modal-header").appendTo(mc);
+        $('#ele').find(".modal-body").appendTo(mc);
+        $('#ele').find(".modal-footer").appendTo(mc);
+        mdia.appendTo(md);
+        console.log("modal ele:"+ele.html());
     }
     
     //icons
@@ -106,6 +119,7 @@ var convert = function(str){
     // replace .thumbnails with .media-list
             
     str = ele.html();
+    $('#ele').remove();
       
     return str;
 }
