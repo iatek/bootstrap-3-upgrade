@@ -36,11 +36,6 @@ var convert = function(str){
     str = str.replace(/hero-unit/g,'jumbotron');
     str = str.replace(/nav-list/g,'');
     str = str.replace(/nav-fixed-sidebar/g,'affix');
-    //str = str.replace(/(?!class=\")icon/g,'glyphicon');
-    //str = str.replace(/[^glyph]icon-(?=[a-zA-Z]+)/g,'glyphicon glyphicon-');
-    //str = str.replace(/icon-(?=[a-zA-Z]+)/g,'glyphicon glyphicon-');   
-    //str = str.replace(/(?!class=\")icon(?=[\s\"]?[^icon])/g,'glyphicon glyphicon'); works!
-    //str = str.replace(/[^glyph]icon-(?=[a-zA-Z])/g,'glyphicon glyphicon-');
     
     str = str.replace(/(='\bicon-)/g,"='glyphicon glyphicon-");
     str = str.replace(/(="\bicon-)/g,"=\"glyphicon glyphicon-");
