@@ -19,8 +19,8 @@
                     if (typeof data.error!="undefined") {
                         alert(data.error);
                     } else {
-                        console.log(converted);
-                        var converted = style_html(data.results).replace(/-\s->/g,"-->",options);
+                        console.log(data.result);
+                        var converted = style_html(data.result).replace(/-\s->/g,"-->",options);
                     
                         $('#target').val(converted);
                         $('html, body').animate({
