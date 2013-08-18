@@ -57,7 +57,7 @@ var convert = function(str){
     ele.html(str);
     ele.appendTo("body");
     
-    //navbar
+    //navbar structure
     var nb = $('#ele').find('.navbar');
     if (typeof nb!="undefined"){
         nb.find('.nav').addClass('navbar-nav'); // add the navbar-nav class
@@ -70,11 +70,8 @@ var convert = function(str){
         
         //wrap the brand and nav-toggle with nav-header
             
-            
             var brand = nb.find(".navbar-brand");
             var togg = nb.find(".navbar-toggle");
-            //nb.remove(".navbar-brand");
-            //nb.remove(".navbar-toggle");
             var navbarheader = $('<div class="navbar-header"></div>');
             
             if (typeof brand != "undefined" && typeof togg != "undefined") {
@@ -84,7 +81,6 @@ var convert = function(str){
             }
             
             console.log("ele"+ele.html());
-        
     }
     
     //icons
