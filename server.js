@@ -13,7 +13,13 @@ app.post('/', function(req, res){
     
     var source = req.body["source"];
     var target = convert(source);
-    res.json({result:target});
+    
+    if (typeof target!="undefined"&&target.length>0){
+        res.json({result:target});
+    }
+    else {
+        res.json({error:"Error: Unable to convert HTML"});
+    }
 
 });
 
@@ -22,33 +28,42 @@ app.get('/*', function(req, res){
     res.render('404.ejs');
 });
 
+var rules = [
+    {name:"container",regex:/container-fluid/g,rep:"container"},
+    {name:"row",regex:/row-fluid/g,rep:"row"},
+    {name:"span",regex:/span(?=[1-9|10|11|12])/g,rep:"col-md-"},
+    {name:"offset",regex:/offset(?=[1-9|10|11|12])/g,rep:"col-lg-offset-"},
+    {name:"btn",regex:/(?!class=\")btn(?=[\s\"][^\-|btn])/g,rep:"btn btn-default"},
+    {name:"btn-mini",regex:/btn-mini/g,rep:"btn-xs"},
+    {name:"btn-lg",regex:/btn-large/g,rep:"btn-lg"},
+    {name:"btn-small",regex:/btn-small/g,rep:"btn-sm"},
+    {name:"input",regex:/input-large/g,rep:"input-lg"},
+    {name:"input",regex:/input-small/g,rep:"input-sm"},
+    {name:"input",regex:/input-append/g,rep:"input-group"},
+    {name:"add-on",regex:/add-on/g,rep:"input-group-addon"},
+    {name:"hero",regex:/hero-unit/g,rep:"jumbotron"},
+    {name:"nav list",regex:/nav-list/g,rep:""},
+    {name:"fixed",regex:/nav-fixed-sidebar/g,rep:"affix"},
+    {name:"icons",regex:/(='\bicon-)/g,rep:"='glyphicon glyphicon-"},
+    {name:"icons",regex:/(="\bicon-)/g,rep:"=\"glyphicon glyphicon-"},
+    {name:"icons",regex:/(=\bicon-)/g,rep:"=glyphicon glyphicon-"},
+    {name:"span",regex:/\bclass+(\sicon-)/g,rep:"=\"glyphicon glyphicon-"},
+    {name:"brand",regex:/(?!class=\")brand/g,rep:"navbar-brand"},
+    {name:"btn",regex:/(?!class=\")btn btn-navbar/g,rep:"navbar-toggle"},
+    {name:"nav",regex:/nav-collapse/g,rep:"navbar-collapse"},
+    {name:"toggle",regex:/nav-toggle/g,rep:"navbar-toggle"},
+    {name:"util",regex:/(?!class=\")-phone/g,rep:"-sm"},
+    {name:"util",regex:/(?!class=\")-tablet/g,rep:"-md"},
+    {name:"util",regex:/(?!class=\")-desktop/g,rep:"-lg"}
+    ];
+
 var convert = function(str){
     
     /* known regex string replacements */
 
-    str = str.replace(/container-fluid/g,"container");
-    str = str.replace(/row-fluid/g,"row");
-    //str = str.replace(/span(?=[1-9|10|11|12])/g,'col col-lg-');
-    str = str.replace(/span(?=[1-9|10|11|12])/g,'col-lg-');
-    str = str.replace(/offset(?=[1-9|10|11|12])/g,'col-lg-offset-');
-    str = str.replace(/(?!class=\")btn(?=[\s\"][^\-|btn])/g,'btn btn-default');
-    str = str.replace(/btn-mini/g,'btn-sm');
-    str = str.replace(/hero-unit/g,'jumbotron');
-    str = str.replace(/nav-list/g,'');
-    str = str.replace(/nav-fixed-sidebar/g,'affix');
-    
-    str = str.replace(/(='\bicon-)/g,"='glyphicon glyphicon-");
-    str = str.replace(/(="\bicon-)/g,"=\"glyphicon glyphicon-");
-    str = str.replace(/(=\bicon-)/g,"=glyphicon glyphicon-");
-    str = str.replace(/\bclass+(\sicon-)/g,"=\"glyphicon glyphicon-");
-    
-    str = str.replace(/(?!class=\")brand/g,'navbar-brand');
-    str = str.replace(/(?!class=\")btn btn-navbar/g,'navbar-toggle');
-    str = str.replace(/nav-collapse/g,'navbar-collapse');
-    str = str.replace(/nav-toggle/g,'navbar-toggle');
-    str = str.replace(/(?!class=\")-phone/g,'-sm');
-    str = str.replace(/(?!class=\")-tablet/g,'-md');
-    str = str.replace(/(?!class=\")-desktop/g,'-lg');
+    for (var i=0;i<rules.length;i++){
+        str = str.replace(rules[i].regex,rules[i].rep);
+    }
     
     /* structure changes require DOM manipulation */
 
@@ -69,18 +84,17 @@ var convert = function(str){
         }
         
         //wrap the brand and nav-toggle with nav-header
-            
-            var brand = nb.find(".navbar-brand");
-            var togg = nb.find(".navbar-toggle");
-            var navbarheader = $('<div class="navbar-header"></div>');
-            
-            if (typeof brand != "undefined" && typeof togg != "undefined") {
-                brand.appendTo(navbarheader);
-                togg.appendTo(navbarheader);
-                navbarheader.prependTo(nb);
-            }
-            
-            console.log("ele"+ele.html());
+        var brand = nb.find(".navbar-brand");
+        var togg = nb.find(".navbar-toggle");
+        var navbarheader = $('<div class="navbar-header"></div>');
+        
+        if (typeof brand != "undefined" && typeof togg != "undefined") {
+            brand.appendTo(navbarheader);
+            togg.appendTo(navbarheader);
+            navbarheader.prependTo(nb);
+        }
+        
+        console.log("ele"+ele.html());
     }
     
     //icons
