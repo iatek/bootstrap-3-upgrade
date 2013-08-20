@@ -42,6 +42,7 @@ var rules = [
     {name:"input",regex:/input-append/g,rep:"input-group"},
     {name:"input",regex:/input-prepend/g,rep:"input-group"},
     {name:"add-on",regex:/add-on/g,rep:"input-group-addon"},
+    {name:"label",regex:/(?!class=\")label(?=[\s\"][^\-|label])/g,rep:"label label-default"},
     {name:"hero",regex:/hero-unit/g,rep:"jumbotron"},
     {name:"nav list",regex:/nav-list/g,rep:""},
     {name:"affix",regex:/nav-fixed-sidebar/g,rep:"affix"},
