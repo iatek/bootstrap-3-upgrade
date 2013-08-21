@@ -83,8 +83,6 @@ var convert = function(str){
         var nb_inner = nb.find('.navbar-inner'); // remove the 2.x navbar-inner
         var h = nb_inner.html();
         
-        console.log("inner-------------------"+h);
-        
         if (typeof h!="undefined"){
             nb.html(h);
         }
