@@ -77,10 +77,14 @@ var convert = function(str){
     //navbar structure
     var nb = $('#ele').find('.navbar');
     if (typeof nb!="undefined"){
+        nb.addClass('navbar-default');
         nb.find('.nav').addClass('navbar-nav'); // add the navbar-nav class
         nb.find('.btn').addClass('navbar-btn');
         var nb_inner = nb.find('.navbar-inner'); // remove the 2.x navbar-inner
         var h = nb_inner.html();
+        
+        console.log("inner-------------------"+h);
+        
         if (typeof h!="undefined"){
             nb.html(h);
         }
