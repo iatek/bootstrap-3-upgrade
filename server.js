@@ -75,6 +75,8 @@ var convert = function(str){
     ele.html(str);
     ele.appendTo("body");
     
+    console.log("--------------------------------"+ele.html());
+    
     //navbar structure
     var nb = $('#ele').find('.navbar');
     if (typeof nb!="undefined"){
