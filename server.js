@@ -69,18 +69,15 @@ var convert = function(str){
     }
     
     /* structure changes require DOM manipulation */
+    
+    console.log("--------------------------------"+str);
 
     $('#ele').remove();
-    //var ele = $('<form id="ele"></form>');
-    var ele = $('<textarea id="ele"></textarea>');
-    //ele.html(str);
-    ele.val(str);
-    
-    ele = $(ele.val());
-    
+    var ele = $('<form id="ele"></form>');
+    ele.html(str);
     ele.appendTo("body");
     
-    console.log("--------------------------------"+ele.html());
+    //console.log("--------------------------------"+ele.html());
     
     //navbar structure
     var nb = $('#ele').find('.navbar');
