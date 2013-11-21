@@ -70,14 +70,14 @@ var convert = function(str){
     
     /* structure changes require DOM manipulation */
     
-    console.log("--------------------------------"+str);
-
+    var convertNavs = false;
+    
+    if (convertNavs) {
+    
     $('#ele').remove();
     var ele = $('<form id="ele"></form>');
     ele.empty().html(str);
     ele.appendTo("body");
-    
-    //console.log("--------------------------------"+ele.html());
     
     //navbar structure
     var nb = $('#ele').find('.navbar');
@@ -128,6 +128,8 @@ var convert = function(str){
             
     str = ele.html();
     $('#ele').remove();
+    
+    }
       
     return str;
 }
