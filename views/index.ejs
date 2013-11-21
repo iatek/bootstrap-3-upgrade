@@ -22,7 +22,9 @@
                         //var converted = style_html(data.result).replace(/-\s->/g,"-->",options);
                         var converted = data.result;
                         
-                        $('#target').val(converted);
+                        console.log(converted);
+                        
+                        $('#decoder').val(converted);
                         $('html, body').animate({
                             scrollTop: $("#bs3").offset().top
                         }, 1000);
@@ -155,6 +157,7 @@
           <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-size="large" data-related="Bootply">Tweet</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
         </div>
+        <div id="decoder" style="display:none;"></div>
     </div>
     
     <hr>
