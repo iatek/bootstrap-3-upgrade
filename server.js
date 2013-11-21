@@ -71,7 +71,8 @@ var convert = function(str){
     /* structure changes require DOM manipulation */
 
     $('#ele').remove();
-    var ele = $('<form id="ele"></form>');
+    //var ele = $('<form id="ele"></form>');
+    var ele = $('<body id="ele"></body>');
     ele.html(str);
     ele.appendTo("body");
     
