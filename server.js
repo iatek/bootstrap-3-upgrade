@@ -71,8 +71,13 @@ var convert = function(str){
     /* structure changes require DOM manipulation */
 
     $('#ele').remove();
-    var ele = $('<form id="ele"></form>');
-    ele.html(str);
+    //var ele = $('<form id="ele"></form>');
+    var ele = $('<textarea id="ele"></textarea>');
+    //ele.html(str);
+    ele.val(str);
+    
+    ele = $(ele.val());
+    
     ele.appendTo("body");
     
     console.log("--------------------------------"+ele.html());
