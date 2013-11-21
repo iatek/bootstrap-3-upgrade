@@ -19,7 +19,8 @@
                     if (typeof data.error!="undefined") {
                         alert(data.error);
                     } else {
-                        var converted = style_html(data.result).replace(/-\s->/g,"-->",options);
+                        //var converted = style_html(data.result).replace(/-\s->/g,"-->",options);
+                        var converted = data.result;
                         
                         $('#target').val(converted);
                         $('html, body').animate({
