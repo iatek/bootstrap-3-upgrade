@@ -12,7 +12,8 @@ app.get('/', function(req,res){
 app.post('/', function(req, res){
     
     var source = req.body["source"];
-    var target = convert(source);
+    var convertStructure = req.body["convertStructure"];
+    var target = convert(source,convertStructure);
     
     if (typeof target!="undefined"&&target.length>0){
         res.json({result:target});
@@ -59,11 +60,11 @@ var rules = [
     {name:"util",regex:/(?!class=\")-phone/g,rep:"-sm"},
     {name:"util",regex:/(?!class=\")-tablet/g,rep:"-md"},
     {name:"util",regex:/(?!class=\")-desktop/g,rep:"-lg"},
-    //{name:"nav",regex:/navbar-inner/g,rep:"container"},
-    //{name:"nav",regex:/navbar\s.nav/g,rep:"navbar-nav"}
+    {name:"nav",regex:/navbar-inner/g,rep:"container"},
+    {name:"nav",regex:/navbar\s.nav/g,rep:"navbar-nav"}
     ];
 
-var convert = function(str){
+var convert = function(str,convertStructure){
     
     /* known regex string replacements */
 
@@ -73,9 +74,7 @@ var convert = function(str){
     
     /* structure changes require DOM manipulation */
     
-    var convertNavs = false;
-    
-    if (convertNavs) {
+    if (convertStructure) {
     
         $('#ele').remove();
         var ele = $('<form id="ele"></form>');
@@ -136,5 +135,4 @@ var convert = function(str){
       
     return str;
 }
-
 
