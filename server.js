@@ -74,7 +74,7 @@ var convert = function(str){
 
     $('#ele').remove();
     var ele = $('<form id="ele"></form>');
-    ele.html(str);
+    ele.empty().html(str);
     ele.appendTo("body");
     
     //console.log("--------------------------------"+ele.html());
