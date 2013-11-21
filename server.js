@@ -65,14 +65,13 @@ var convert = function(str){
     /* known regex string replacements */
 
     for (var i=0;i<rules.length;i++){
-        str = str.replace(rules[i].regex,rules[i].rep);
+        //str = str.replace(rules[i].regex,rules[i].rep);
     }
     
     /* structure changes require DOM manipulation */
 
     $('#ele').remove();
-    //var ele = $('<form id="ele"></form>');
-    var ele = $('<body id="ele"></body>');
+    var ele = $('<form id="ele"></form>');
     ele.html(str);
     ele.appendTo("body");
     
@@ -123,7 +122,7 @@ var convert = function(str){
     
     // replace .thumbnails with .media-list
             
-    str = ele.text();
+    str = ele.html();
     $('#ele').remove();
       
     return str;
