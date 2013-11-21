@@ -65,7 +65,7 @@ var convert = function(str){
     /* known regex string replacements */
 
     for (var i=0;i<rules.length;i++){
-        //str = str.replace(rules[i].regex,rules[i].rep);
+        str = str.replace(rules[i].regex,rules[i].rep);
     }
     
     /* structure changes require DOM manipulation */
